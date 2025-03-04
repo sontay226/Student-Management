@@ -81,17 +81,17 @@ public class Student {
 
     public void DelStudent(String _id) {
         students.forEach(e -> {
-            if(e.equals(_id)) {
+            if(e.id.equals(_id)) {
                 students.remove(e);
                 return;
             }
         });
     }
 
-    public void ChangeStudent(String _id, String _name, String _belongClass, String _birth,
-                              String _faculty, String _phoneNumber, String _address) {
+    public void ChangeStudentInfo(String _id, String _name, String _belongClass, String _birth,
+                                  String _faculty, String _phoneNumber, String _address) {
         students.forEach(e -> {
-            if(e.equals(_id)) {
+            if(e.id.equals(_id)) {
                 setName(_name);
                 setAddress(_address);
                 setBirth(_birth);
@@ -103,7 +103,25 @@ public class Student {
         });
     }
 
-    public Student GetStudentById(String id) {
-        return;
+    public Student GetStudentById(String _id) {
+        Student ans = null;
+        for(Student ptr : students) {
+            if(ptr.id.equals(_id)) {
+                ans = ptr;
+                break;
+            }
+        }
+        return ans;
+    }
+
+    public Student GetStudentByName(String _name) {
+        Student ans = null;
+        for(Student ptr : students) {
+            if(ptr.name.equals(_name)) {
+                ans = ptr;
+                break;
+            }
+        }
+        return ans;
     }
 }
