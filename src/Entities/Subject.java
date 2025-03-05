@@ -1,97 +1,42 @@
 package Entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Subject {
-    private String subjectId, subjectName, subjectPart, subjectTeacher;
-    public List<Subject> subjects;
+    private String subjectId;
+    private String subjectName;
+    private int credits;
+    private String teacher;
 
-    public Subject(String _id, String _name, String _part, String _teacher) {
-        this.subjectId = _id;
-        this.subjectName = _name;
-        this.subjectPart = _part;
-        this.subjectTeacher = _teacher;
-        subjects = new ArrayList<>();
-    }
-
-    public String getSubjectId() {
-        return subjectId;
-    }
-
-    public void setSubjectId(String subjectId) {
+    public Subject(String subjectId, String subjectName, int credits, String teacher) {
         this.subjectId = subjectId;
-    }
-
-    public String getSubjectName() {
-        return subjectName;
-    }
-
-    public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
+        this.credits = credits;
+        this.teacher = teacher;
     }
 
-    public String getSubjectPart() {
-        return subjectPart;
-    }
+    // Getters & Setters
+    public String getSubjectId() {return subjectId;}
 
-    public void setSubjectPart(String subjectPart) {
-        this.subjectPart = subjectPart;
-    }
+    public void setSubjectId(String subjectId) {this.subjectId = subjectId;}
 
-    public String getSubjectTeacher() {
-        return subjectTeacher;
-    }
+    public String getSubjectName() {return subjectName;}
 
-    public void setSubjectTeacher(String subjectTeacher) {
-        this.subjectTeacher = subjectTeacher;
-    }
+    public void setSubjectName(String subjectName) {this.subjectName = subjectName;}
 
-    public List<Subject> getSubjects() {
-        return subjects;
-    }
+    public int getCredits() {return credits;}
 
-    public void setSubjects(List<Subject> subjects) {
-        this.subjects = subjects;
-    }
+    public void setCredits(int credits) {this.credits = credits;}
 
-    public void AddSubject(Subject subject) {
-        subjects.add(subject);
-    }
+    public String getTeacher() {return teacher;}
 
-    public void ChangSubjectsInfo(String _id, String _name, String _part, String _teacher) {
-        subjects.forEach(e -> {
-            if(e.subjectId.equals(_id)) {
-                e.setSubjectName(_name);
-                e.setSubjectPart(_part);
-                e.setSubjectTeacher(_teacher);
-            }
-        });
-    }
+    public void setTeacher(String teacher) {this.teacher = teacher;}
 
-    public void DelSubject(String _id) {
-        subjects.removeIf(e -> e.subjectId.equals(_id));
-    }
-
-    public Subject GetSubjectById(String _id) {
-        Subject ans = null;
-        for(Subject ptr : subjects) {
-            if(ptr.subjectId.equals(_id)) {
-                ans = ptr;
-                break;
-            }
-        }
-        return ans;
-    }
-
-    public Subject GetSubjectByName(String _name) {
-        Subject ans = null;
-        for(Subject ptr : subjects) {
-            if(ptr.subjectId.equals(_name)) {
-                ans = ptr;
-                break;
-            }
-        }
-        return ans;
+    @Override
+    public String toString() {
+        return "Subject{" +
+               "subjectId='" + subjectId + '\'' +
+               ", subjectName='" + subjectName + '\'' +
+               ", credits=" + credits +
+               ", teacher='" + teacher + '\'' +
+               '}';
     }
 }

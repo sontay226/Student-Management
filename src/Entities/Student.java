@@ -1,22 +1,17 @@
 package Entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Student {
-    private String name, id, belongClass, birth, faculty, phoneNumber, address;
-    public List<Student> students;
+    private String name, id, className, birth, faculty, phoneNumber, address;
 
     public Student(String name, String id, String belongClass, String birth, String faculty
             , String phoneNumber, String address) {
         this.name = name;
         this.address = address;
         this.id = id;
-        this.belongClass = belongClass;
+        this.className = belongClass;
         this.faculty = faculty;
         this.phoneNumber = phoneNumber;
         this.birth = birth;
-        students = new ArrayList<>();
     }
 
     public String getName() {
@@ -35,12 +30,12 @@ public class Student {
         this.id = id;
     }
 
-    public String getBelongClass() {
-        return belongClass;
+    public String getClassName() {
+        return className;
     }
 
-    public void setBelongClass(String belongClass) {
-        this.belongClass = belongClass;
+    public void setClassName(String className) {
+        this.className = className;
     }
 
     public String getBirth() {
@@ -75,53 +70,17 @@ public class Student {
         this.address = address;
     }
 
-    public void AddStudent(Student student) {
-        students.add(student);
+    @Override
+    public String toString() {
+        return "Student{" +
+               "id='" + id + '\'' +
+               ", name='" + name + '\'' +
+               ", dateOfBirth='" + birth + '\'' +
+               ", className='" + className + '\'' +
+               ", faculty='" + faculty + '\'' +
+               ", phoneNumber='" + phoneNumber + '\'' +
+               ", address='" + address + '\'' +
+               '}';
     }
 
-    public void DelStudent(String _id) {
-        students.forEach(e -> {
-            if(e.id.equals(_id)) {
-                students.remove(e);
-                return;
-            }
-        });
-    }
-
-    public void ChangeStudentInfo(String _id, String _name, String _belongClass, String _birth,
-                                  String _faculty, String _phoneNumber, String _address) {
-        students.forEach(e -> {
-            if(e.id.equals(_id)) {
-                setName(_name);
-                setAddress(_address);
-                setBirth(_birth);
-                setBelongClass(_belongClass);
-                setFaculty(_faculty);
-                setPhoneNumber(_phoneNumber);
-                return;
-            }
-        });
-    }
-
-    public Student GetStudentById(String _id) {
-        Student ans = null;
-        for(Student ptr : students) {
-            if(ptr.id.equals(_id)) {
-                ans = ptr;
-                break;
-            }
-        }
-        return ans;
-    }
-
-    public Student GetStudentByName(String _name) {
-        Student ans = null;
-        for(Student ptr : students) {
-            if(ptr.name.equals(_name)) {
-                ans = ptr;
-                break;
-            }
-        }
-        return ans;
-    }
 }
